@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "680087096926",
+    "project_id": "cafe-house-177f2",
+    "storage_bucket": "cafe-house-177f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680087096926:android:de517c642dc5d898bcaecf",
+        "android_client_info": {
+          "package_name": "com.example.cafehouse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680087096926-bjhommc893ngb6dn7al68d15umtni88h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiW0LyEj6PiMDtM7myxrzUgM56zmOZ7kw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680087096926-bjhommc893ngb6dn7al68d15umtni88h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
