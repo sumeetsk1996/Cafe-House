@@ -1,74 +1,68 @@
-package com.example.cafehouse;
+package com.example.cafehouse
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-public class SignUp_Activity extends AppCompatActivity {
-    Button signup;
-    TextView facebook;
-    TextView google;
-    TextView alreadyacct;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-
-        getSupportActionBar().hide();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        TextView alreadyacct = findViewById(R.id.tvAlreadyAcct);
-
-        alreadyacct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SignUp_Activity.this, SignIn_Activity.class);
-                startActivity(intent);
+class SignUp_Activity : AppCompatActivity() {
+    var signUp: Button? = null
+    var facebook: TextView? = null
+    var google: TextView? = null
+    var alreadyAcct: TextView? = null
+    var etEmail: EditText? = null
+    var etPassword: EditText? = null
+    var etPersonName: EditText? = null
+    var etPhone: EditText? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_sign_up)
+        supportActionBar!!.hide()
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        alreadyAcct = findViewById(R.id.tvAlreadyAcct)
+        signUp = findViewById(R.id.btnsignUp)
+        facebook = findViewById(R.id.tvFacebook)
+        google = findViewById(R.id.tvGoogle)
+        etEmail = findViewById(R.id.etEmail)
+        etPassword = findViewById(R.id.etPassword)
+        etPersonName = findViewById(R.id.etPersonName)
+        etPhone = findViewById(R.id.etPhone)
+        alreadyAcct.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this@SignUp_Activity, SignIn_Activity::class.java)
+            startActivity(intent)
+        })
+       signUp.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                run {
+                    var email = etEmail.getText().toString()
+                    var password = etPassword.getText().toString()
+                    var phone = etPhone.getText().toString()
+                    var personName = etPersonName.getText().toString()
+                    println(email)
+                    if (email == "" || password == "" || phone == "" || personName == "") {
+                        Toast.makeText(this@SignUp_Activity, "please fill all the fields ", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(this@SignUp_Activity, "SignIn got Successful ", Toast.LENGTH_LONG).show()
+                    }
+                }
             }
-        });
-
-        Button signup=findViewById(R.id.btnsignUp);
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {{
-
-                Toast.makeText(SignUp_Activity.this, "SignUp Successful ", Toast.LENGTH_LONG).show();}
-
-            }
-        });
-        TextView facebook = findViewById(R.id.tvFacebook);
-        facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoUrl("https://www.facebook.com/home.php");
-            }
-        });
-
-        TextView google = findViewById(R.id.tvGoogle);
-        google.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoUrl("https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox");
-            }
-        });
-    }
-    private void gotoUrl(String s){
-        Uri uri= Uri.parse(s);
-        startActivity(new Intent(Intent.ACTION_VIEW,uri));
+        })
+        facebook.setOnClickListener(View.OnClickListener { gotoUrl("https://www.facebook.com/home.php") })
+        google.setOnClickListener(View.OnClickListener { gotoUrl("https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox") })
     }
 
+    private fun gotoUrl(s: String) {
+        val uri = Uri.parse(s)
+        startActivity(Intent(Intent.ACTION_VIEW, uri))
+    }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return super.onSupportNavigateUp();
-
-
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
     }
 }
