@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
         Objects.requireNonNull(supportActionBar)!!.hide()
+
+
         val login = findViewById<Button>(R.id.btnlogin)
         login.setOnClickListener {
             Toast.makeText(this@MainActivity, "Please Enter Your Details", Toast.LENGTH_LONG).show()

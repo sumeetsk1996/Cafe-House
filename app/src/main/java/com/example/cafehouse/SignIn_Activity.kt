@@ -11,28 +11,35 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class SignIn_Activity : AppCompatActivity() {
-    var signIn: Button? = null
-    var getCreateAcct: TextView? = null
-    var facebook: TextView? = null
-    var google: TextView? = null
-    var etEmail: EditText? = null
-    var etPassword: EditText? = null
+   // var signIn: Button? = null
+   // var getCreateAcct: TextView? = null
+   // var facebook: TextView? = null
+  //  var google: TextView? = null
+  //  var etEmail: EditText? = null
+  //  var etPassword: EditText? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
+
         supportActionBar!!.hide()
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        signIn = findViewById(R.id.btnsignIn)
-        etEmail = findViewById(R.id.etEmail)
-        etPassword = findViewById(R.id.etPassword)
-        getCreateAcct = findViewById(R.id.tvCreateAcct)
-        facebook = findViewById(R.id.tvFacebook)
-        google = findViewById(R.id.tvGoogle)
+
+       val signIn = findViewById<Button>(R.id.btnsignIn)
+       val etEmail = findViewById<EditText>(R.id.etEmail)
+       val etPassword = findViewById<EditText>(R.id.etPassword)
+       val getCreateAcct = findViewById<TextView>(R.id.tvCreateAcct)
+       val facebook = findViewById<TextView>(R.id.tvFacebook)
+       val google = findViewById<TextView>(R.id.tvGoogle)
+
+
+
        signIn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
                 run {
-                    var email = etEmail.getText().toString()
-                    var password = etPassword.getText().toString()
+                    val email = etEmail.getText().toString()
+                    val password = etPassword.getText().toString()
                     println(email)
                     if (email == "" || password == "") {
                         Toast.makeText(this@SignIn_Activity, "please fill all the fields ", Toast.LENGTH_LONG).show()
